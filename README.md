@@ -11,111 +11,189 @@ Topologi IT32
 **Nusantara**
 
 auto eth0
+
 iface eth0 inet dhcp
 
+
 auto eth1 
+
 iface eth1 inet static
+
   address 10.79.1.1
+  
   netmask 255.255.255.0
+  
 
 auto eth2
+
 iface eth2 inet static
+
   address 10.79.2.1
+  
   netmask 255.255.255.0
+  
 
 auto eth3
+
 iface eth3 inet static
+
   address 10.79.3.1
+  
   netmask 255.255.255.0
+  
 
 up iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 10.79.0.0/16
+
 
 **Majapahit**
 
 auto eth0
+
 iface eth0 inet static
+
   address 10.79.1.2
+  
   netmask 255.255.255.0
+  
   gateway 10.79.1.1
+  
 
 up echo nameserver 192.168.122.1>/etc/resolv.conf
 
+
 **Hayam Wuruk**
 
+
 auto eth0 
+
 iface eth0 inet static
+
   address 10.79.1.3
+  
   netmask 255.255.255.0
+  
   gateway 10.79.1.1
+  
 
 up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
 
 **Solok**
 
+
 auto eth0
+
 iface eth0 inet static
+
   address 10.79.1.4
+  
   netmask 255.255.255.0
+  
   gateway 10.79.1.1
+  
 
 up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
 
 **Srikandi**
 
+
 auto eth0
+
 iface eth0 inet static
+
   address 10.79.1.5
+  
   netmask 255.255.255.0
+  
   gateway 10.79.1.1
+  
 
 up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
 
 **Sriwijaya**
 
+
 auto eth0
+
 iface eth0 inet static
+
   address 10.79.3.2
+  
   netmask 255.255.255.0
+  
   gateway 10.79.3.1
+  
 
 up echo nameserver 198.162.122.1 > /etc/resolv.conf
+
 
 **Albert Einstein**
 
+
 auto eth0
+
 iface eth0 inet static
+
   address 10.79.2.2
+  
   netmask 255.255.255.0
+  
   gateway 10.79.2.1
+  
 
 up echo nameserver 198.162.122.1 > /etc/resolv.conf
 
+
 **Tanjung Kulai**
 
+
 auto eth0
+
 iface eth0 inet static
+
   address 10.79.2.3
+  
   netmask 255.255.255.0
+  
   gateway 10.79.2.1
+  
 
 up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
 
 **Bedahulu**
 
+
 auto eth0
+
 iface eth0 inet static
+
   address 10.79.2.4
+  
   netmask 255.255.255.0
+  
   gateway 10.79.2.1
+  
 
 up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
 
 **Kotalingga**
 
+
 auto eth0
+
 iface eth0 inet static
+
   address 10.79.2.5
+  
   netmask 255.255.255.0
+  
   gateway 10.79.2.1
+  
 
 up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+
