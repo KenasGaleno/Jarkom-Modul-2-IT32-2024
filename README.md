@@ -326,6 +326,45 @@ Topologi IT32
    1. ping.sudarsana.it32.com
    2. ping.rudapala.it32.com
    3. ping.pasopati.it32.com
+  
+6. Beberapa daerah memiliki keterbatasan yang menyebabkan hanya dapat mengakses domain secara langsung melalui alamat IP domain tersebut. Karena daerah tersebut tidak diketahui secara spesifik, pastikan semua komputer (client) dapat mengakses domain pasopati.xxxx.com melalui alamat IP Kotalingga (Notes: menggunakan pointer record).
+
+  1. cd /etc/bind
+  2. nano named.conf.local
+  3. masukkan
+           zone "2.79.10.in-addr.arpa" {
+        type master;
+        file "/etc/bind/it32/2.79.10.in-addr.arpa";
+      };
+   4. cd it32
+   5. cp pasopati.it32.com 2.79.10.in-addr.arpa
+   6. ls
+   7. nano 2.79.10.in-addr.arpa
+   8. masukkan
+      ;
+      ; BIND data file for local loopback interface
+      ;
+      $TTL    604800
+      @       IN      SOA     pasopati.it32.com. root.pasopati.it32.com. (
+                                    2         ; Serial
+                               604800         ; Refresh
+                                86400         ; Retry
+                              2419200         ; Expire
+                               604800 )       ; Negative Cache TTL
+      ;
+      2.79.10.in-addr.arpa.   IN  NS          pasopati.it32.com.
+      5                       IN  PTR         pasopati.it32.com.
+
+      
+   9. service bind9 restart
+       masuk ke client
+   11. apt install dnsutils -y
+   12. nano /etc/resolv.conf
+   13. host -t PTR 10.79.2.5
+
+
+           
+
 
 
 
