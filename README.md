@@ -206,10 +206,10 @@ Topologi IT32
       
    3. Isi dengan
 
-            ```bash
+      ```bash
             zone "sudarsana.it32.com" {
           type master;
-          file "/etc/bind/it07/sudarsana.it32.com";
+          file "/etc/bind/it32/sudarsana.it32.com";
       };
       ```
       
@@ -259,17 +259,32 @@ Topologi IT32
 3. Para pasukan juga perlu mengetahui mana titik yang akan diserang, sehingga dibutuhkan domain lain yaitu pasopati.xxxx.com dengan alias www.pasopati.xxxx.com yang mengarah ke Kotalingga.
 
 
-   1. nano /etc/bind/named.conf.local
-   2. zone "pasopati.it32.com" {
-    type master;
-    file "/etc/bind/it07/pasopati.it32.com";
-};
+   1. Masuk kedalam named.conf.local
+      ```bash
+      nano /etc/bind/named.conf.local
+      ```
+   2. Membuat configurasi Domain
+      ```bash
+      zone "pasopati.it32.com" {
+      type master;
+      file "/etc/bind/it32/pasopati.it32.com";
+      };
+      ```
 
-   3. cp /etc/bind/db.local /etc/bind/it32/pasopati.it32.com
-   4. cd /etc/bind/it32/
-   5. nano pasopati.it32.com
+   3. Copy db.local
+      ```bash
+      cp /etc/bind/db.local /etc/bind/it32/pasopati.it32.com
+      ```
+   4. Masuk ke direktori yang sudah dibuat
+      ```bash
+      cd /etc/bind/it32/
+      ```
+   5. Masuk domain yang dibuat
+      ```bash
+      nano pasopati.it32.com
+      ```
    6. Isi dengan
-
+      ```bash
       ;
       ; BIND data file for local loopback interface
       ;
@@ -285,24 +300,43 @@ Topologi IT32
       @       IN      A       10.79.2.5
       @       IN      AAAA    ::1
       www     IN      CNAME   pasopati.it32.com.
+      ```
+   7. Lakukan restart
+      ```bash
+      service bind9 restart
+      ```
+   8. check terus
+       ```bash
+       ping pasopati.it32.com
+       ```
 
-   7. service bind9 restart
-   8. check terus ping pasopati.it32.com
+5. Markas pusat meminta dibuatnya domain khusus untuk menaruh informasi persenjataan dan suplai yang tersebar. Informasi dan suplai meme terbaru tersebut mengarah ke Tanjungkulai dan domain yang ingin digunakan adalah rujapala.xxxx.com dengan alias www.rujapala.xxxx.com.
 
-
-4. Markas pusat meminta dibuatnya domain khusus untuk menaruh informasi persenjataan dan suplai yang tersebar. Informasi dan suplai meme terbaru tersebut mengarah ke Tanjungkulai dan domain yang ingin digunakan adalah rujapala.xxxx.com dengan alias www.rujapala.xxxx.com.
-
-   1. nano /etc/bind/named.conf.local
-   2. isi
+   1. Masuk kedalam named.conf.local
+      ```bash
+      nano /etc/bind/named.conf.local
+      ```
+   2. isi dengan configurasi
+      ```bash
       zone "rujapala.it32.com" {
-    type master;
-    file "/etc/bind/it32/rujapala.it32.com";
-};
-
-   3. cp /etc/bind/db.local /etc/bind/it32/rujapala.it32.com
-   4. cd /etc/bind/it32/
-   5. nano rujapala.it32.com
-   6. isi
+      type master;
+      file "/etc/bind/it32/rujapala.it32.com";
+      };
+      ```
+   3. Copy db.local ke etc/binnd ke dalam folder it32
+      ```bash
+      cp /etc/bind/db.local /etc/bind/it32/rujapala.it32.com
+      ```
+   4. Masuk ke direktori
+      ```bash
+      cd /etc/bind/it32/
+      ```
+   5. Masuk ke dalam domain yang dibuat
+      ```bash
+      nano rujapala.it32.com
+      ```
+   6. isi dengan
+      ```bash
       ;
       ; BIND data file for local loopback interface
       ;
@@ -318,16 +352,20 @@ Topologi IT32
       @       IN      A       10.79.2.3
       @       IN      AAAA    ::1
       www     IN      CNAME   rujapala.it32.com.
-   7. service bind9 restart
+      ```
+   7. Restart
+       ```bash
+       service bind9 restart
+       ```
    8. ping rujakala.it32,com (buat ngececk)
   
-5. Pastikan domain-domain tersebut dapat diakses oleh seluruh komputer (client) yang berada di Nusantara.
+6. Pastikan domain-domain tersebut dapat diakses oleh seluruh komputer (client) yang berada di Nusantara.
 
    1. ping.sudarsana.it32.com
    2. ping.rudapala.it32.com
    3. ping.pasopati.it32.com
   
-6. Beberapa daerah memiliki keterbatasan yang menyebabkan hanya dapat mengakses domain secara langsung melalui alamat IP domain tersebut. Karena daerah tersebut tidak diketahui secara spesifik, pastikan semua komputer (client) dapat mengakses domain pasopati.xxxx.com melalui alamat IP Kotalingga (Notes: menggunakan pointer record).
+7. Beberapa daerah memiliki keterbatasan yang menyebabkan hanya dapat mengakses domain secara langsung melalui alamat IP domain tersebut. Karena daerah tersebut tidak diketahui secara spesifik, pastikan semua komputer (client) dapat mengakses domain pasopati.xxxx.com melalui alamat IP Kotalingga (Notes: menggunakan pointer record).
 
   1. cd /etc/bind
   2. nano named.conf.local
