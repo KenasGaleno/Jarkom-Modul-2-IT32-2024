@@ -310,7 +310,7 @@ Topologi IT32
        ping pasopati.it32.com
        ```
 
-5. Markas pusat meminta dibuatnya domain khusus untuk menaruh informasi persenjataan dan suplai yang tersebar. Informasi dan suplai meme terbaru tersebut mengarah ke Tanjungkulai dan domain yang ingin digunakan adalah rujapala.xxxx.com dengan alias www.rujapala.xxxx.com.
+4. Markas pusat meminta dibuatnya domain khusus untuk menaruh informasi persenjataan dan suplai yang tersebar. Informasi dan suplai meme terbaru tersebut mengarah ke Tanjungkulai dan domain yang ingin digunakan adalah rujapala.xxxx.com dengan alias www.rujapala.xxxx.com.
 
    1. Masuk kedalam named.conf.local
       ```bash
@@ -359,26 +359,41 @@ Topologi IT32
        ```
    8. ping rujakala.it32,com (buat ngececk)
   
-6. Pastikan domain-domain tersebut dapat diakses oleh seluruh komputer (client) yang berada di Nusantara.
+5. Pastikan domain-domain tersebut dapat diakses oleh seluruh komputer (client) yang berada di Nusantara.
 
    1. ping.sudarsana.it32.com
    2. ping.rudapala.it32.com
    3. ping.pasopati.it32.com
   
-7. Beberapa daerah memiliki keterbatasan yang menyebabkan hanya dapat mengakses domain secara langsung melalui alamat IP domain tersebut. Karena daerah tersebut tidak diketahui secara spesifik, pastikan semua komputer (client) dapat mengakses domain pasopati.xxxx.com melalui alamat IP Kotalingga (Notes: menggunakan pointer record).
+6. Beberapa daerah memiliki keterbatasan yang menyebabkan hanya dapat mengakses domain secara langsung melalui alamat IP domain tersebut. Karena daerah tersebut tidak diketahui secara spesifik, pastikan semua komputer (client) dapat mengakses domain pasopati.xxxx.com melalui alamat IP Kotalingga (Notes: menggunakan pointer record).
 
-  1. cd /etc/bind
-  2. nano named.conf.local
+  1. ```bash
+     cd /etc/bind
+     ```
+  2. ```bash
+     nano named.conf.local
+     ```
   3. masukkan
-           zone "2.79.10.in-addr.arpa" {
+      ```bash
+      zone "2.79.10.in-addr.arpa" {
         type master;
         file "/etc/bind/it32/2.79.10.in-addr.arpa";
       };
-   4. cd it32
-   5. cp pasopati.it32.com 2.79.10.in-addr.arpa
-   6. ls
-   7. nano 2.79.10.in-addr.arpa
+      ```
+   4. ```bash
+      cd it32
+      ```
+   5. ```bash
+      cp pasopati.it32.com 2.79.10.in-addr.arpa
+      ```
+   6. ```bash
+      ls
+      ```
+   7. ```bash
+      nano 2.79.10.in-addr.arpa
+      ```
    8. masukkan
+      ```bash
       ;
       ; BIND data file for local loopback interface
       ;
@@ -392,14 +407,21 @@ Topologi IT32
       ;
       2.79.10.in-addr.arpa.   IN  NS          pasopati.it32.com.
       5                       IN  PTR         pasopati.it32.com.
-
+      ```
       
-   9. service bind9 restart
-       masuk ke client
-   11. apt install dnsutils -y
-   12. nano /etc/resolv.conf
-   13. host -t PTR 10.79.2.5
-
+   9. ```bash
+      service bind9 restart
+      ```
+   10. masuk ke client
+       ```bash
+       apt install dnsutils -y
+       ```
+       ```bash
+       nano /etc/resolv.conf
+       ```
+       ```bash
+       host -t PTR 10.79.2.5
+       ```
 
            
 
