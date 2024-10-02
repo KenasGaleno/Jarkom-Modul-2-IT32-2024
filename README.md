@@ -320,6 +320,12 @@ Topologi IT32
       www     IN      CNAME   rujapala.it32.com.
    7. service bind9 restart
    8. ping rujakala.it32,com (buat ngececk)
+  
+5. Pastikan domain-domain tersebut dapat diakses oleh seluruh komputer (client) yang berada di Nusantara.
+
+   1. ping.sudarsana.it32.com
+   2. ping.rudapala.it32.com
+   3. ping.pasopati.it32.com
 
 
 
