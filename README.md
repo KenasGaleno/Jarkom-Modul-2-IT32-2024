@@ -46,7 +46,7 @@ up iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 10.79.0.0/16
 ```
 
 **Majapahit**
-
+```bash
 auto eth0
 
 iface eth0 inet static
@@ -59,11 +59,11 @@ iface eth0 inet static
   
 
 up echo nameserver 192.168.122.1>/etc/resolv.conf
-
+```
 
 **Hayam Wuruk**
 
-
+```bash
 auto eth0 
 
 iface eth0 inet static
@@ -76,11 +76,11 @@ iface eth0 inet static
   
 
 up echo nameserver 192.168.122.1 > /etc/resolv.conf
-
+```
 
 **Solok**
 
-
+```bash
 auto eth0
 
 iface eth0 inet static
@@ -93,11 +93,11 @@ iface eth0 inet static
   
 
 up echo nameserver 192.168.122.1 > /etc/resolv.conf
-
+```
 
 **Srikandi**
 
-
+```bash
 auto eth0
 
 iface eth0 inet static
@@ -110,11 +110,11 @@ iface eth0 inet static
   
 
 up echo nameserver 192.168.122.1 > /etc/resolv.conf
-
+```
 
 **Sriwijaya**
 
-
+```bash
 auto eth0
 
 iface eth0 inet static
@@ -127,11 +127,11 @@ iface eth0 inet static
   
 
 up echo nameserver 198.162.122.1 > /etc/resolv.conf
-
+```
 
 **Albert Einstein**
 
-
+```bash
 auto eth0
 
 iface eth0 inet static
@@ -144,11 +144,11 @@ iface eth0 inet static
   
 
 up echo nameserver 198.162.122.1 > /etc/resolv.conf
-
+```
 
 **Tanjung Kulai**
 
-
+```bash
 auto eth0
 
 iface eth0 inet static
@@ -161,11 +161,11 @@ iface eth0 inet static
   
 
 up echo nameserver 192.168.122.1 > /etc/resolv.conf
-
+```
 
 **Bedahulu**
 
-
+```bash
 auto eth0
 
 iface eth0 inet static
@@ -178,11 +178,11 @@ iface eth0 inet static
   
 
 up echo nameserver 192.168.122.1 > /etc/resolv.conf
-
+```
 
 **Kotalingga**
 
-
+```bash
 auto eth0
 
 iface eth0 inet static
@@ -195,5 +195,5 @@ iface eth0 inet static
   
 
 up echo nameserver 192.168.122.1 > /etc/resolv.conf
-
+```
 
