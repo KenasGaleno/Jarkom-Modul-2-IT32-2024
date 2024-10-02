@@ -254,3 +254,72 @@ Topologi IT32
       ```bash
       service bind9 restart
       ```
+
+
+3. Para pasukan juga perlu mengetahui mana titik yang akan diserang, sehingga dibutuhkan domain lain yaitu pasopati.xxxx.com dengan alias www.pasopati.xxxx.com yang mengarah ke Kotalingga.
+
+
+   1. nano /etc/bind/named.conf.local
+   2. zone "pasopati.it32.com" {
+    type master;
+    file "/etc/bind/it07/pasopati.it32.com";
+};
+
+   3. cp /etc/bind/db.local /etc/bind/it32/pasopati.it32.com
+   4. cd /etc/bind/it32/
+   5. nano pasopati.it32.com
+   6. Isi dengan
+
+      ;
+      ; BIND data file for local loopback interface
+      ;
+      $TTL    604800
+      @       IN      SOA     pasopati.it32.com. root.pasopati.it32.com. (
+                                    2         ; Serial
+                               604800         ; Refresh
+                                86400         ; Retry
+                              2419200         ; Expire
+                               604800 )       ; Negative Cache TTL
+      ;
+      @       IN      NS      pasopati.it32.com.
+      @       IN      A       10.79.2.5
+      @       IN      AAAA    ::1
+      www     IN      CNAME   pasopati.it32.com.
+
+   7. service bind9 restart
+   8. check terus ping pasopati.it32.com
+
+
+4. Markas pusat meminta dibuatnya domain khusus untuk menaruh informasi persenjataan dan suplai yang tersebar. Informasi dan suplai meme terbaru tersebut mengarah ke Tanjungkulai dan domain yang ingin digunakan adalah rujapala.xxxx.com dengan alias www.rujapala.xxxx.com.
+
+   1. nano /etc/bind/named.conf.local
+   2. isi
+      zone "rujapala.it32.com" {
+    type master;
+    file "/etc/bind/it32/rujapala.it32.com";
+};
+
+   3. cp /etc/bind/db.local /etc/bind/it32/rujapala.it32.com
+   4. cd /etc/bind/it32/
+   5. nano rujapala.it32.com
+   6. isi
+      ;
+      ; BIND data file for local loopback interface
+      ;
+      $TTL    604800
+      @       IN      SOA     rujapala.it32.com. root.rujapala.it32.com. (
+                                    2         ; Serial
+                               604800         ; Refresh
+                                86400         ; Retry
+                              2419200         ; Expire
+                               604800 )       ; Negative Cache TTL
+      ;
+      @       IN      NS      rujapala.it32.com.
+      @       IN      A       10.79.2.3
+      @       IN      AAAA    ::1
+      www     IN      CNAME   rujapala.it32.com.
+   7. service bind9 restart
+   8. ping rujakala.it32,com (buat ngececk)
+
+
+
