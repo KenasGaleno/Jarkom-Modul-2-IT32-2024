@@ -9,7 +9,7 @@ Topologi IT32
 1. Untuk mempersiapkan peperangan World War MMXXIV (Iya sebanyak itu), Sriwijaya membuat dua kotanya menjadi web server yaitu Tanjungkulai, dan Bedahulu, serta Sriwijaya sendiri akan menjadi DNS Master. Kemudian karena merasa terdesak, Majapahit memberikan bantuan dan menjadikan kerajaannya (Majapahit) menjadi DNS Slave.
 
 **Nusantara**
-
+```bash
 auto eth0
 
 iface eth0 inet dhcp
@@ -43,7 +43,7 @@ iface eth3 inet static
   
 
 up iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 10.79.0.0/16
-
+```
 
 **Majapahit**
 
