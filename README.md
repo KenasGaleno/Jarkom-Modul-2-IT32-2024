@@ -367,32 +367,38 @@ Topologi IT32
   
 6. Beberapa daerah memiliki keterbatasan yang menyebabkan hanya dapat mengakses domain secara langsung melalui alamat IP domain tersebut. Karena daerah tersebut tidak diketahui secara spesifik, pastikan semua komputer (client) dapat mengakses domain pasopati.xxxx.com melalui alamat IP Kotalingga (Notes: menggunakan pointer record).
 
-   1 ```bash
+   1. ```bash
         cd /etc/bind
         ```
-   2 ```bash
+
+   2. ```bash
         nano named.conf.local
         ```
-   3 masukkan
+
+   3. masukkan
          ```bash
          zone "2.79.10.in-addr.arpa" {
            type master;
            file "/etc/bind/it32/2.79.10.in-addr.arpa";
          };
          ```
-   4 ```bash
+
+   4. ```bash
          cd it32
          ```
-   5 ```bash
+   5. ```bash
          cp pasopati.it32.com 2.79.10.in-addr.arpa
          ```
-   6 ```bash
+
+   6. ```bash
          ls
          ```
-   7 ```bash
+
+   7. ```bash
          nano 2.79.10.in-addr.arpa
          ```
-   8 masukkan
+
+   8. masukkan
          ```bash
          ;
          ; BIND data file for local loopback interface
@@ -409,10 +415,12 @@ Topologi IT32
          5                       IN  PTR         pasopati.it32.com.
          ```
          
-   9 ```bash
+
+   9. ```bash
          service bind9 restart
          ```
-   10 masuk ke client
+
+   10. masuk ke client
           ```bash
           apt install dnsutils -y
           ```
