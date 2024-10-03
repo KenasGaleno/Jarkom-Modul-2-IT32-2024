@@ -557,7 +557,7 @@ Topologi IT32
 
       1. ```bash
          cd /etc/bind/it32
-        ```
+         ```
       2. ```bash
           nano /etc/bind/it32/pasopati.it32.com
          ```
