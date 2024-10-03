@@ -361,9 +361,15 @@ Topologi IT32
   
 5. Pastikan domain-domain tersebut dapat diakses oleh seluruh komputer (client) yang berada di Nusantara.
 
-   1. ping.sudarsana.it32.com
-   2. ping.rudapala.it32.com
-   3. ping.pasopati.it32.com
+   1. ```bash
+      ping.sudarsana.it32.com
+      ```
+   2. ```bash
+      ping.rudapala.it32.com
+      ```
+   3. ```bash
+      ping.pasopati.it32.com
+      ```
   
 6. Beberapa daerah memiliki keterbatasan yang menyebabkan hanya dapat mengakses domain secara langsung melalui alamat IP domain tersebut. Karena daerah tersebut tidak diketahui secara spesifik, pastikan semua komputer (client) dapat mengakses domain pasopati.xxxx.com melalui alamat IP Kotalingga (Notes: menggunakan pointer record).
 
