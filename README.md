@@ -435,60 +435,67 @@ Topologi IT32
 7. Akhir-akhir ini seringkali terjadi serangan brainrot ke DNS Server Utama, sebagai tindakan antisipasi kamu diperintahkan untuk membuat DNS Slave di Majapahit untuk semua domain yang sudah dibuat sebelumnya yang mengarah ke Sriwijaya.
 
 
-   1. apt install bind9 dnsutils -y
-  
+   1. ```bash
+      apt install bind9 dnsutils -y
+      ```
 
-   2. cd /etc/bind
-  
+   2. ```bash
+      cd /etc/bind
+     ```
 
-   3. nano named.conf.local
-
+   3. ```bash
+      nano named.conf.local
+      ```
 
    4. Masukkan
-  
-      zone "sudarsana.it32.com" {
+  ```bash
+  zone "sudarsana.it32.com" {
     type master;
     notify yes;
     also-notify { 10.79.3.2; }; 
     allow-transfer { 10.79.3.2; };
     file "/etc/bind/it32/sudarsana.it32.com";
-};
+   };
 
-zone "pasopati.it32.com" {
-    type master;
-    notify yes;
-    also-notify { 10.79.3.2; };
-    allow-transfer { 10.79.3.2; };
-    file "/etc/bind/it32/pasopati.it32.com";
-};
+  zone "pasopati.it32.com" {
+       type master;
+       notify yes;
+       also-notify { 10.79.3.2; };
+       allow-transfer { 10.79.3.2; };
+       file "/etc/bind/it32/pasopati.it32.com";
+  };
 
-zone "rujapala.it32.com" {  
-    type master;
-    notify yes;
-    also-notify { 10.79.3.2; };
-    allow-transfer { 10.79.3.2; };
-    file "/etc/bind/it32/rujapala.it32.com";
-};
+   zone "rujapala.it32.com" {  
+       type master;
+       notify yes;
+       also-notify { 10.79.3.2; };
+       allow-transfer { 10.79.3.2; };
+       file "/etc/bind/it32/rujapala.it32.com";
+   };
 
-zone "1.79.10.in-addr.arpa" {
-    type master;
-    file "/etc/bind/it32/1.79.10.in-addr.arpa";
-};
+   zone "1.79.10.in-addr.arpa" {
+       type master;
+       file "/etc/bind/it32/1.79.10.in-addr.arpa";
+   };
+```
 
-
-   5. service bind9 restart
-
-   6. ping sudarsana.it32.com
-
+   5. ```bash
+      service bind9 restart
+      ```
+   6. ```bash
+      ping sudarsana.it32.com
+      ```
 
 8. Kamu juga diperintahkan untuk membuat subdomain khusus melacak kekuatan tersembunyi di Ohio dengan subdomain cakra.sudarsana.xxxx.com yang mengarah ke Bedahulu.
 
-   1. cd /etc/bind/it32
-  
-   2. nano sudarsana.it32.com
-  
+   1. ```bash
+      cd /etc/bind/it32
+      ```
+   2. ```bash
+      nano sudarsana.it32.com
+      ```
    3. Masukkan
-  
+      ```bash
       ;
       ; BIND data file for sudarsana.it32.com
       ;
@@ -505,19 +512,23 @@ zone "1.79.10.in-addr.arpa" {
       @       IN      AAAA    ::1
       www     IN      CNAME   sudarsana.it32.com.
       cakra   IN      A       10.79.1.5     
-
-   4. service bind9 restart
-
-   5. ping cakra.sudarsana.it32.com
-  
+      ```
+   4. ```bash
+      service bind9 restart
+      ```
+   5. ```bash
+      ping cakra.sudarsana.it32.com
+      ```
 9. Karena terjadi serangan DDOS oleh shikanoko nokonoko koshitantan (NUN), sehingga sistem komunikasinya terhalang. Untuk melindungi warga, kita diperlukan untuk membuat sistem peringatan dari siren man oleh Frekuensi Freak dan memasukkannya ke subdomain panah.pasopati.xxxx.com dalam folder panah dan pastikan dapat diakses secara mudah dengan menambahkan alias www.panah.pasopati.xxxx.com dan mendelegasikan subdomain tersebut ke Majapahit dengan alamat IP menuju radar di Kotalingga.
 
-   1. cd /etc/bind/it32
-  
-   2. nano /etc/bind/it32/pasopati.it32.com
-
+   1. ```bash
+      cd /etc/bind/it32
+      ```
+   2. ```bash
+      nano /etc/bind/it32/pasopati.it32.com
+      ```
    3. Masukkan
-  
+     ```bash
       ;
       ; BIND data file for pasopati.it32.com
       ;
@@ -535,69 +546,86 @@ zone "1.79.10.in-addr.arpa" {
       www     IN      CNAME   pasopati.it32.com.
       ns1     IN      A       10.79.3.2      
       panah   IN      NS      ns1
-
-   4. nano /etc/bind/named.conf.options
+   ```
+   4. ```bash
+      nano /etc/bind/named.conf.options
+      ```
   
    5. Masukkan
-  
+     ```bash
       options {
     directory "/var/cache/bind";
     allow-query { any; };
 
     auth-nxdomain no;    
     listen-on-v6 { any; };
-};
+   };
+     ```
 
-   6. service bind9 restart
+   6. ```bash
+      service bind9 restart
+      ```
 
    7. Masuk ke Majapahit
 
+      ```bash
       cd /etc/bind
+      ```
 
-   8. nano /etc/bind/named.conf.options
+   8. ```bash
+      nano /etc/bind/named.conf.options
+      ```
 
    9. Masukkan
-  
-       options {
+     ```bash
+    options {
     directory "/var/cache/bind";
     allow-query { any; };
 
     auth-nxdomain no;   
     listen-on-v6 { any; };
-};
+    };
+     ```
 
-   10. nano /etc/bind/named.conf.local
+   10. ```bash
+       nano /etc/bind/named.conf.local
+       ```
 
-   11. zone "sudarsana.it32.com" {
-    type slave;
-    masters { 10.79.1.2; };  
-    file "/var/lib/bind/sudarsana.it32.com";
-};
+   11. ```bash
+       zone "sudarsana.it32.com" {
+       type slave;
+       masters { 10.79.1.2; };  
+       file "/var/lib/bind/sudarsana.it32.com";
+       };
 
-zone "pasopati.it32.com" {
-    type slave;
-    masters { 10.79.1.2; };   
-    file "/var/lib/bind/pasopati.it32.com";
-};
+       zone "pasopati.it32.com" {
+       type slave;
+       masters { 10.79.1.2; };   
+       file "/var/lib/bind/pasopati.it32.com";
+       };
 
-zone "rujapala.it32.com" {
-    type slave;
-    masters { 10.79.1.2; };   
-    file "/var/lib/bind/rujapala.it32.com";
-};
+       zone "rujapala.it32.com" {
+       type slave;
+       masters { 10.79.1.2; };   
+       file "/var/lib/bind/rujapala.it32.com";
+       };
 
-zone "panah.pasopati.it32.com" {
-    type master;
-    file "/etc/bind/panah/panah.pasopati.it32.com";
-};
+       zone "panah.pasopati.it32.com" {
+       type master;
+       file "/etc/bind/panah/panah.pasopati.it32.com";
+       };
+       ```
 
+   12. ```bash
+       mkdir /etc/bind/panah
+       ```
 
-   12. mkdir /etc/bind/panah
-
-   13. nano /etc/bind/panah/panah.pasopati.it32.com
+   13. ```bash
+       nano /etc/bind/panah/panah.pasopati.it32.com
+       ```
 
    14. Masukkan
-
+      ```bash
       ;
       ; BIND data file for panah.pasopati.it32.com
       ;
@@ -613,13 +641,15 @@ zone "panah.pasopati.it32.com" {
       @       IN      A       10.79.1.6      
       @       IN      AAAA    ::1
       www     IN      CNAME   panah.pasopati.it32.com.
-
-   15. service bind9 restart
+      ```
+   15. ```bash
+       service bind9 restart
+       ```
 
    16. Cek di client
-
+       ```bash
        ping panah.pasopati.it32.com
-
+       ```
 
 
 
