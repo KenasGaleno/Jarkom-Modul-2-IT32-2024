@@ -367,61 +367,61 @@ Topologi IT32
   
 6. Beberapa daerah memiliki keterbatasan yang menyebabkan hanya dapat mengakses domain secara langsung melalui alamat IP domain tersebut. Karena daerah tersebut tidak diketahui secara spesifik, pastikan semua komputer (client) dapat mengakses domain pasopati.xxxx.com melalui alamat IP Kotalingga (Notes: menggunakan pointer record).
 
-  1. ```bash
-     cd /etc/bind
-     ```
-  2. ```bash
-     nano named.conf.local
-     ```
-  3. masukkan
-      ```bash
-      zone "2.79.10.in-addr.arpa" {
-        type master;
-        file "/etc/bind/it32/2.79.10.in-addr.arpa";
-      };
-      ```
-   4. ```bash
-      cd it32
-      ```
-   5. ```bash
-      cp pasopati.it32.com 2.79.10.in-addr.arpa
-      ```
-   6. ```bash
-      ls
-      ```
-   7. ```bash
-      nano 2.79.10.in-addr.arpa
-      ```
-   8. masukkan
-      ```bash
-      ;
-      ; BIND data file for local loopback interface
-      ;
-      $TTL    604800
-      @       IN      SOA     pasopati.it32.com. root.pasopati.it32.com. (
-                                    2         ; Serial
-                               604800         ; Refresh
-                                86400         ; Retry
-                              2419200         ; Expire
-                               604800 )       ; Negative Cache TTL
-      ;
-      2.79.10.in-addr.arpa.   IN  NS          pasopati.it32.com.
-      5                       IN  PTR         pasopati.it32.com.
-      ```
-      
-   9. ```bash
-      service bind9 restart
-      ```
-   10. masuk ke client
-       ```bash
-       apt install dnsutils -y
-       ```
-       ```bash
-       nano /etc/resolv.conf
-       ```
-       ```bash
-       host -t PTR 10.79.2.5
-       ```
+   1 ```bash
+        cd /etc/bind
+        ```
+   2 ```bash
+        nano named.conf.local
+        ```
+   3 masukkan
+         ```bash
+         zone "2.79.10.in-addr.arpa" {
+           type master;
+           file "/etc/bind/it32/2.79.10.in-addr.arpa";
+         };
+         ```
+   4 ```bash
+         cd it32
+         ```
+   5 ```bash
+         cp pasopati.it32.com 2.79.10.in-addr.arpa
+         ```
+   6 ```bash
+         ls
+         ```
+   7 ```bash
+         nano 2.79.10.in-addr.arpa
+         ```
+   8 masukkan
+         ```bash
+         ;
+         ; BIND data file for local loopback interface
+         ;
+         $TTL    604800
+         @       IN      SOA     pasopati.it32.com. root.pasopati.it32.com. (
+                                       2         ; Serial
+                                  604800         ; Refresh
+                                   86400         ; Retry
+                                 2419200         ; Expire
+                                  604800 )       ; Negative Cache TTL
+         ;
+         2.79.10.in-addr.arpa.   IN  NS          pasopati.it32.com.
+         5                       IN  PTR         pasopati.it32.com.
+         ```
+         
+   9 ```bash
+         service bind9 restart
+         ```
+   10 masuk ke client
+          ```bash
+          apt install dnsutils -y
+          ```
+          ```bash
+          nano /etc/resolv.conf
+          ```
+          ```bash
+          host -t PTR 10.79.2.5
+          ```
 
            
 
