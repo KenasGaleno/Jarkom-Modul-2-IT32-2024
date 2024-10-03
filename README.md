@@ -9,6 +9,7 @@ Topologi IT32
 1. Untuk mempersiapkan peperangan World War MMXXIV (Iya sebanyak itu), Sriwijaya membuat dua kotanya menjadi web server yaitu Tanjungkulai, dan Bedahulu, serta Sriwijaya sendiri akan menjadi DNS Master. Kemudian karena merasa terdesak, Majapahit memberikan bantuan dan menjadikan kerajaannya (Majapahit) menjadi DNS Slave.
 
     **Nusantara**
+   
     ```bash
     auto eth0
     
@@ -46,6 +47,7 @@ Topologi IT32
     ```
     
     **Majapahit**
+   
     ```bash
     auto eth0
     
@@ -197,9 +199,10 @@ Topologi IT32
     up echo nameserver 192.168.122.1 > /etc/resolv.conf
     ```
 
-2. Karena para pasukan membutuhkan koordinasi untuk melancarkan serangannya, maka buatlah sebuah domain yang mengarah ke Solok dengan alamat sudarsana.xxxx.com dengan alias www.sudarsana.xxxx.com, dimana xxxx merupakan kode kelompok. Contoh: sudarsana.it01.com.
+3. Karena para pasukan membutuhkan koordinasi untuk melancarkan serangannya, maka buatlah sebuah domain yang mengarah ke Solok dengan alamat sudarsana.xxxx.com dengan alias www.sudarsana.xxxx.com, dimana xxxx merupakan kode kelompok. Contoh: sudarsana.it01.com.
 
    1. Pertama membuat
+      
       ```bash
       nano /etc/bind/named.conf.local
       ```
@@ -256,14 +259,16 @@ Topologi IT32
       ```
 
 
-3. Para pasukan juga perlu mengetahui mana titik yang akan diserang, sehingga dibutuhkan domain lain yaitu pasopati.xxxx.com dengan alias www.pasopati.xxxx.com yang mengarah ke Kotalingga.
+4. Para pasukan juga perlu mengetahui mana titik yang akan diserang, sehingga dibutuhkan domain lain yaitu pasopati.xxxx.com dengan alias www.pasopati.xxxx.com yang mengarah ke Kotalingga.
 
 
    1. Masuk kedalam named.conf.local
+      
       ```bash
       nano /etc/bind/named.conf.local
       ```
-   2. Membuat configurasi Domain
+   3. Membuat configurasi Domain
+      
       ```bash
       zone "pasopati.it32.com" {
       type master;
@@ -271,19 +276,23 @@ Topologi IT32
       };
       ```
 
-   3. Copy db.local
+   4. Copy db.local
+      
       ```bash
       cp /etc/bind/db.local /etc/bind/it32/pasopati.it32.com
       ```
-   4. Masuk ke direktori yang sudah dibuat
+   5. Masuk ke direktori yang sudah dibuat
+      
       ```bash
       cd /etc/bind/it32/
       ```
-   5. Masuk domain yang dibuat
+   6. Masuk domain yang dibuat
+      
       ```bash
       nano pasopati.it32.com
       ```
-   6. Isi dengan
+   7. Isi dengan
+      
       ```bash
       ;
       ; BIND data file for local loopback interface
@@ -301,41 +310,49 @@ Topologi IT32
       @       IN      AAAA    ::1
       www     IN      CNAME   pasopati.it32.com.
       ```
-   7. Lakukan restart
+   8. Lakukan restart
+      
       ```bash
       service bind9 restart
       ```
-   8. check terus
+   9. check terus
+       
        ```bash
        ping pasopati.it32.com
        ```
 
-4. Markas pusat meminta dibuatnya domain khusus untuk menaruh informasi persenjataan dan suplai yang tersebar. Informasi dan suplai meme terbaru tersebut mengarah ke Tanjungkulai dan domain yang ingin digunakan adalah rujapala.xxxx.com dengan alias www.rujapala.xxxx.com.
+5. Markas pusat meminta dibuatnya domain khusus untuk menaruh informasi persenjataan dan suplai yang tersebar. Informasi dan suplai meme terbaru tersebut mengarah ke Tanjungkulai dan domain yang ingin digunakan adalah rujapala.xxxx.com dengan alias www.rujapala.xxxx.com.
 
    1. Masuk kedalam named.conf.local
+      
       ```bash
       nano /etc/bind/named.conf.local
       ```
-   2. isi dengan configurasi
+   3. isi dengan configurasi
+      
       ```bash
       zone "rujapala.it32.com" {
       type master;
       file "/etc/bind/it32/rujapala.it32.com";
       };
       ```
-   3. Copy db.local ke etc/binnd ke dalam folder it32
+   4.  Copy db.local ke etc/binnd ke dalam folder it32
+      
       ```bash
       cp /etc/bind/db.local /etc/bind/it32/rujapala.it32.com
       ```
-   4. Masuk ke direktori
+   4.  Masuk ke direktori
+      
       ```bash
       cd /etc/bind/it32/
       ```
-   5. Masuk ke dalam domain yang dibuat
+   5.  Masuk ke dalam domain yang dibuat
+      
       ```bash
       nano rujapala.it32.com
       ```
-   6. isi dengan
+   6.  isi dengan
+      
       ```bash
       ;
       ; BIND data file for local loopback interface
@@ -357,9 +374,9 @@ Topologi IT32
        ```bash
        service bind9 restart
        ```
-   8. ping rujakala.it32,com (buat ngececk)
+   8.  ping rujakala.it32,com (buat ngececk)
   
-5. Pastikan domain-domain tersebut dapat diakses oleh seluruh komputer (client) yang berada di Nusantara.
+6. Pastikan domain-domain tersebut dapat diakses oleh seluruh komputer (client) yang berada di Nusantara.
 
    1. ```bash
       ping.sudarsana.it32.com
@@ -371,7 +388,7 @@ Topologi IT32
       ping.pasopati.it32.com
       ```
   
-6. Beberapa daerah memiliki keterbatasan yang menyebabkan hanya dapat mengakses domain secara langsung melalui alamat IP domain tersebut. Karena daerah tersebut tidak diketahui secara spesifik, pastikan semua komputer (client) dapat mengakses domain pasopati.xxxx.com melalui alamat IP Kotalingga (Notes: menggunakan pointer record).
+7. Beberapa daerah memiliki keterbatasan yang menyebabkan hanya dapat mengakses domain secara langsung melalui alamat IP domain tersebut. Karena daerah tersebut tidak diketahui secara spesifik, pastikan semua komputer (client) dapat mengakses domain pasopati.xxxx.com melalui alamat IP Kotalingga (Notes: menggunakan pointer record).
 
    1. ```bash
         cd /etc/bind
@@ -381,7 +398,8 @@ Topologi IT32
         nano named.conf.local
         ```
 
-   3. masukkan
+   3.  masukkan
+      
          ```bash
          zone "2.79.10.in-addr.arpa" {
            type master;
@@ -389,22 +407,23 @@ Topologi IT32
          };
          ```
 
-   4. ```bash
+   5. ```bash
          cd it32
          ```
-   5. ```bash
+   6. ```bash
          cp pasopati.it32.com 2.79.10.in-addr.arpa
          ```
 
-   6. ```bash
+   7. ```bash
          ls
          ```
 
-   7. ```bash
+   8. ```bash
          nano 2.79.10.in-addr.arpa
          ```
 
-   8. masukkan
+   9.  masukkan
+      
          ```bash
          ;
          ; BIND data file for local loopback interface
@@ -422,11 +441,12 @@ Topologi IT32
          ```
          
 
-   9. ```bash
+   10. ```bash
          service bind9 restart
          ```
 
-   10. masuk ke client
+   11.  masuk ke client
+       
           ```bash
           apt install dnsutils -y
           ```
@@ -438,7 +458,7 @@ Topologi IT32
           ```
 
 
-7. Akhir-akhir ini seringkali terjadi serangan brainrot ke DNS Server Utama, sebagai tindakan antisipasi kamu diperintahkan untuk membuat DNS Slave di Majapahit untuk semua domain yang sudah dibuat sebelumnya yang mengarah ke Sriwijaya.
+8. Akhir-akhir ini seringkali terjadi serangan brainrot ke DNS Server Utama, sebagai tindakan antisipasi kamu diperintahkan untuk membuat DNS Slave di Majapahit untuk semua domain yang sudah dibuat sebelumnya yang mengarah ke Sriwijaya.
 
 
    1. ```bash
@@ -453,7 +473,8 @@ Topologi IT32
       nano named.conf.local
       ```
 
-   4. Masukkan
+   4.  Masukkan
+      
   ```bash
   zone "sudarsana.it32.com" {
     type master;
@@ -500,7 +521,8 @@ Topologi IT32
       2. ```bash
       nano sudarsana.it32.com
       ```
-      3. Masukkan
+      3.  Masukkan
+         
       ```bash
       ;
       ; BIND data file for sudarsana.it32.com
@@ -525,6 +547,7 @@ Topologi IT32
       5. ```bash
       ping cakra.sudarsana.it32.com
       ```
+      
 9. Karena terjadi serangan DDOS oleh shikanoko nokonoko koshitantan (NUN), sehingga sistem komunikasinya terhalang. Untuk melindungi warga, kita diperlukan untuk membuat sistem peringatan dari siren man oleh Frekuensi Freak dan memasukkannya ke subdomain panah.pasopati.xxxx.com dalam folder panah dan pastikan dapat diakses secara mudah dengan menambahkan alias www.panah.pasopati.xxxx.com dan mendelegasikan subdomain tersebut ke Majapahit dengan alamat IP menuju radar di Kotalingga.
 
       1. ```bash
@@ -533,7 +556,8 @@ Topologi IT32
       2. ```bash
       nano /etc/bind/it32/pasopati.it32.com
       ```
-      3. Masukkan
+      3.  Masukkan
+         
      ```bash
       ;
       ; BIND data file for pasopati.it32.com
@@ -557,7 +581,8 @@ Topologi IT32
       nano /etc/bind/named.conf.options
       ```
   
-      5. Masukkan
+      5.  Masukkan
+      
      ```bash
       options {
     directory "/var/cache/bind";
@@ -572,7 +597,7 @@ Topologi IT32
       service bind9 restart
       ```
 
-      7. Masuk ke Majapahit
+      7.  Masuk ke Majapahit
 
       ```bash
       cd /etc/bind
@@ -582,7 +607,8 @@ Topologi IT32
       nano /etc/bind/named.conf.options
       ```
 
-      9. Masukkan
+      9.  Masukkan
+      
      ```bash
     options {
     directory "/var/cache/bind";
@@ -630,7 +656,8 @@ Topologi IT32
        nano /etc/bind/panah/panah.pasopati.it32.com
        ```
 
-      14. Masukkan
+      14.  Masukkan
+          
       ```bash
       ;
       ; BIND data file for panah.pasopati.it32.com
@@ -648,11 +675,14 @@ Topologi IT32
       @       IN      AAAA    ::1
       www     IN      CNAME   panah.pasopati.it32.com.
       ```
+      
       15. ```bash
+          
        service bind9 restart
        ```
 
       16. Cek di client
+          
        ```bash
        ping panah.pasopati.it32.com
        ```
