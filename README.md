@@ -6,7 +6,7 @@
 Topologi IT32
 
 
-      ![Screenshot 2024-10-03 032352](https://github.com/user-attachments/assets/a0226adb-891c-4ae4-adba-23c41c2e3d45)
+![Screenshot 2024-10-03 032352](https://github.com/user-attachments/assets/a0226adb-891c-4ae4-adba-23c41c2e3d45)
 
 1. Untuk mempersiapkan peperangan World War MMXXIV (Iya sebanyak itu), Sriwijaya membuat dua kotanya menjadi web server yaitu Tanjungkulai, dan Bedahulu, serta Sriwijaya sendiri akan menjadi DNS Master. Kemudian karena merasa terdesak, Majapahit memberikan bantuan dan menjadikan kerajaannya (Majapahit) menjadi DNS Slave.
 
@@ -260,14 +260,14 @@ Topologi IT32
       service bind9 restart
       ```
 
-      ![no 2 gns](https://github.com/user-attachments/assets/ed361714-9707-450a-8142-03d2f34f9e33)
+![no 2 gns](https://github.com/user-attachments/assets/ed361714-9707-450a-8142-03d2f34f9e33)
 
 
 
    9. Ping sudarsana.it32.com
       
 
-      ![bukti no 2 gns](https://github.com/user-attachments/assets/fa53cc1d-7a06-42fa-ba94-d2e6dceb05f2)
+![bukti no 2 gns](https://github.com/user-attachments/assets/fa53cc1d-7a06-42fa-ba94-d2e6dceb05f2)
 
 
 3. Para pasukan juga perlu mengetahui mana titik yang akan diserang, sehingga dibutuhkan domain lain yaitu pasopati.xxxx.com dengan alias www.pasopati.xxxx.com yang mengarah ke Kotalingga.
@@ -327,7 +327,7 @@ Topologi IT32
       service bind9 restart
       ```
 
-      ![no 3 gns](https://github.com/user-attachments/assets/1e8f4980-a983-46a6-9ba5-64c3438081a9)
+![no 3 gns](https://github.com/user-attachments/assets/1e8f4980-a983-46a6-9ba5-64c3438081a9)
 
 
 
@@ -337,7 +337,7 @@ Topologi IT32
        ping pasopati.it32.com
        ```
 
-      ![bukti no 3 gns](https://github.com/user-attachments/assets/be73b5d0-80bb-47df-88b4-53bdf351b618)
+![bukti no 3 gns](https://github.com/user-attachments/assets/be73b5d0-80bb-47df-88b4-53bdf351b618)
 
        
 
@@ -395,7 +395,7 @@ Topologi IT32
        service bind9 restart
        ```
 
-      ![no 4 gns](https://github.com/user-attachments/assets/42c6a9d9-0168-4a17-8716-f78ea9360881)
+![no 4 gns](https://github.com/user-attachments/assets/42c6a9d9-0168-4a17-8716-f78ea9360881)
 
 
 
@@ -404,7 +404,7 @@ Topologi IT32
       Ping rujakala.it32.com
       
 
-      ![bukti no 4 gns](https://github.com/user-attachments/assets/5b8230e3-a8c8-40f1-8695-c62d1c630a0c)
+![bukti no 4 gns](https://github.com/user-attachments/assets/5b8230e3-a8c8-40f1-8695-c62d1c630a0c)
 
    
   
@@ -420,7 +420,7 @@ Topologi IT32
       ping.pasopati.it32.com
       ```
 
-      ![no 5 gns](https://github.com/user-attachments/assets/896bb08d-65c0-47cf-93c1-de8306c2fe75)
+![no 5 gns](https://github.com/user-attachments/assets/896bb08d-65c0-47cf-93c1-de8306c2fe75)
 
 
 
@@ -482,7 +482,7 @@ Topologi IT32
          ```
 
        
-      ![no 6 gns](https://github.com/user-attachments/assets/f9842db3-7b01-4d66-8b33-b8b925e5bccb)
+![no 6 gns](https://github.com/user-attachments/assets/f9842db3-7b01-4d66-8b33-b8b925e5bccb)
 
 
 
@@ -498,7 +498,7 @@ Topologi IT32
           host -t PTR 10.79.2.5
           ```
 
-      ![bukti no 6 gns](https://github.com/user-attachments/assets/904c171e-3d16-45ac-b4d0-ccf35d48b053)
+![bukti no 6 gns](https://github.com/user-attachments/assets/904c171e-3d16-45ac-b4d0-ccf35d48b053)
 
 
 7. Akhir-akhir ini seringkali terjadi serangan brainrot ke DNS Server Utama, sebagai tindakan antisipasi kamu diperintahkan untuk membuat DNS Slave di Majapahit untuk semua domain yang sudah dibuat sebelumnya yang mengarah ke Sriwijaya.
@@ -554,14 +554,14 @@ Topologi IT32
       ```
 
 
-      ![no 7 gns](https://github.com/user-attachments/assets/09ef7f11-b074-4247-8beb-cc271b9098b2)
+![no 7 gns](https://github.com/user-attachments/assets/09ef7f11-b074-4247-8beb-cc271b9098b2)
 
 
       6. ```bash
       ping sudarsana.it32.com
       ```
       
-      ![bukti no 7](https://github.com/user-attachments/assets/9a3d48f6-56b4-4c0d-b3c5-72a38db2d3b0)
+![bukti no 7](https://github.com/user-attachments/assets/9a3d48f6-56b4-4c0d-b3c5-72a38db2d3b0)
 
 
 
@@ -597,14 +597,14 @@ Topologi IT32
       service bind9 restart
       ```
 
-      ![no 8 gns](https://github.com/user-attachments/assets/63ddfa9c-f7ad-4b4a-ad62-05b6a33a7a33)
+![no 8 gns](https://github.com/user-attachments/assets/63ddfa9c-f7ad-4b4a-ad62-05b6a33a7a33)
 
 
       5. ```bash
       ping cakra.sudarsana.it32.com
       ```
 
-      ![bukti no 8 gns](https://github.com/user-attachments/assets/894c75bc-d3b4-4102-965c-059e1808d9ab)
+![bukti no 8 gns](https://github.com/user-attachments/assets/894c75bc-d3b4-4102-965c-059e1808d9ab)
 
       
 9. Karena terjadi serangan DDOS oleh shikanoko nokonoko koshitantan (NUN), sehingga sistem komunikasinya terhalang. Untuk melindungi warga, kita diperlukan untuk membuat sistem peringatan dari siren man oleh Frekuensi Freak dan memasukkannya ke subdomain panah.pasopati.xxxx.com dalam folder panah dan pastikan dapat diakses secara mudah dengan menambahkan alias www.panah.pasopati.xxxx.com dan mendelegasikan subdomain tersebut ke Majapahit dengan alamat IP menuju radar di Kotalingga.
@@ -655,8 +655,8 @@ Topologi IT32
       6. ```bash
       service bind9 restart
       ```
-      
-      ![no 9 sriwijaya](https://github.com/user-attachments/assets/1c1ced06-8899-438d-b996-7c2102e97cb7)
+
+![no 9 sriwijaya](https://github.com/user-attachments/assets/1c1ced06-8899-438d-b996-7c2102e97cb7)
 
 
       7.  Masuk ke Majapahit
@@ -743,7 +743,7 @@ Topologi IT32
        service bind9 restart
        ```
 
-      ![no 9 majapahit](https://github.com/user-attachments/assets/bac672c1-20de-49bf-8885-0bbfbb122ce7)
+![no 9 majapahit](https://github.com/user-attachments/assets/bac672c1-20de-49bf-8885-0bbfbb122ce7)
 
 
       16. Cek di client
@@ -752,7 +752,7 @@ Topologi IT32
        ping panah.pasopati.it32.com
        ```
 
-      ![bukti no 9 gns](https://github.com/user-attachments/assets/d282b559-3daa-4bd7-9ec0-d0068ec77031)
+![bukti no 9 gns](https://github.com/user-attachments/assets/d282b559-3daa-4bd7-9ec0-d0068ec77031)
 
 
 10. Markas juga meminta catatan kapan saja meme brain rot akan dijatuhkan, maka buatlah subdomain baru di subdomain panah yaitu log.panah.pasopati.xxxx.com serta aliasnya www.log.panah.pasopati.xxxx.com yang juga mengarah ke Kotalingga.
@@ -795,12 +795,12 @@ Topologi IT32
 
    8. service bind9 restart
 
-      ![no 10 gns](https://github.com/user-attachments/assets/c57444c4-cc49-4f57-8387-0fd8dd9845a7)
+![no 10 gns](https://github.com/user-attachments/assets/c57444c4-cc49-4f57-8387-0fd8dd9845a7)
 
 
    9. ping log.panah.pasopati.it32.com
 
-      ![bukti no 10 gns](https://github.com/user-attachments/assets/0bb1e265-5517-43c9-8b7b-868adc479451)
+![bukti no 10 gns](https://github.com/user-attachments/assets/0bb1e265-5517-43c9-8b7b-868adc479451)
 
 
 11. Setelah pertempuran mereda, warga IT dapat kembali mengakses jaringan luar dan menikmati meme brainrot terbaru, tetapi hanya warga Majapahit saja yang dapat mengakses jaringan luar secara langsung. Buatlah konfigurasi agar warga IT yang berada diluar Majapahit dapat mengakses jaringan luar melalui DNS Server Majapahit.
@@ -827,7 +827,8 @@ Topologi IT32
 
    4. service bind9 restart
 
-      ![no 11 gns](https://github.com/user-attachments/assets/20996f88-ca60-4a7b-98c8-65c78f31f7e8)
+
+![no 11 gns](https://github.com/user-attachments/assets/20996f88-ca60-4a7b-98c8-65c78f31f7e8)
 
 
    5. cat /etc/resolv.conf
@@ -838,7 +839,8 @@ Topologi IT32
 
    6. ping x.com
 
-      ![bukti no 11 gns](https://github.com/user-attachments/assets/301af3c3-0b77-42ed-bf68-3d89131cbb9d)
+
+![bukti no 11 gns](https://github.com/user-attachments/assets/301af3c3-0b77-42ed-bf68-3d89131cbb9d)
 
 
 
