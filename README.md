@@ -485,22 +485,22 @@ Topologi IT32
    };
 ```
 
-   5. ```bash
+      5. ```bash
       service bind9 restart
       ```
-   6. ```bash
+      6. ```bash
       ping sudarsana.it32.com
       ```
 
 8. Kamu juga diperintahkan untuk membuat subdomain khusus melacak kekuatan tersembunyi di Ohio dengan subdomain cakra.sudarsana.xxxx.com yang mengarah ke Bedahulu.
 
-   1. ```bash
+      1. ```bash
       cd /etc/bind/it32
       ```
-   2. ```bash
+      2. ```bash
       nano sudarsana.it32.com
       ```
-   3. Masukkan
+      3. Masukkan
       ```bash
       ;
       ; BIND data file for sudarsana.it32.com
@@ -519,21 +519,21 @@ Topologi IT32
       www     IN      CNAME   sudarsana.it32.com.
       cakra   IN      A       10.79.1.5     
       ```
-   4. ```bash
+      4. ```bash
       service bind9 restart
       ```
-   5. ```bash
+      5. ```bash
       ping cakra.sudarsana.it32.com
       ```
 9. Karena terjadi serangan DDOS oleh shikanoko nokonoko koshitantan (NUN), sehingga sistem komunikasinya terhalang. Untuk melindungi warga, kita diperlukan untuk membuat sistem peringatan dari siren man oleh Frekuensi Freak dan memasukkannya ke subdomain panah.pasopati.xxxx.com dalam folder panah dan pastikan dapat diakses secara mudah dengan menambahkan alias www.panah.pasopati.xxxx.com dan mendelegasikan subdomain tersebut ke Majapahit dengan alamat IP menuju radar di Kotalingga.
 
-   1. ```bash
+      1. ```bash
       cd /etc/bind/it32
       ```
-   2. ```bash
+      2. ```bash
       nano /etc/bind/it32/pasopati.it32.com
       ```
-   3. Masukkan
+      3. Masukkan
      ```bash
       ;
       ; BIND data file for pasopati.it32.com
@@ -553,11 +553,11 @@ Topologi IT32
       ns1     IN      A       10.79.3.2      
       panah   IN      NS      ns1
    ```
-   4. ```bash
+      4. ```bash
       nano /etc/bind/named.conf.options
       ```
   
-   5. Masukkan
+      5. Masukkan
      ```bash
       options {
     directory "/var/cache/bind";
@@ -568,21 +568,21 @@ Topologi IT32
    };
      ```
 
-   6. ```bash
+      6. ```bash
       service bind9 restart
       ```
 
-   7. Masuk ke Majapahit
+      7. Masuk ke Majapahit
 
       ```bash
       cd /etc/bind
       ```
 
-   8. ```bash
+      8. ```bash
       nano /etc/bind/named.conf.options
       ```
 
-   9. Masukkan
+      9. Masukkan
      ```bash
     options {
     directory "/var/cache/bind";
@@ -593,11 +593,11 @@ Topologi IT32
     };
      ```
 
-   10. ```bash
+      10. ```bash
        nano /etc/bind/named.conf.local
        ```
 
-   11. ```bash
+      11. ```bash
        zone "sudarsana.it32.com" {
        type slave;
        masters { 10.79.1.2; };  
@@ -622,15 +622,15 @@ Topologi IT32
        };
        ```
 
-   12. ```bash
+      12. ```bash
        mkdir /etc/bind/panah
        ```
 
-   13. ```bash
+      13. ```bash
        nano /etc/bind/panah/panah.pasopati.it32.com
        ```
 
-   14. Masukkan
+      14. Masukkan
       ```bash
       ;
       ; BIND data file for panah.pasopati.it32.com
@@ -648,11 +648,11 @@ Topologi IT32
       @       IN      AAAA    ::1
       www     IN      CNAME   panah.pasopati.it32.com.
       ```
-   15. ```bash
+      15. ```bash
        service bind9 restart
        ```
 
-   16. Cek di client
+      16. Cek di client
        ```bash
        ping panah.pasopati.it32.com
        ```
