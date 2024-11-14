@@ -3,52 +3,46 @@
 import RPi.GPIO as GPIO
 import time
 
-# GPIO Mode (BCM)
+# Inisialisasi GPIO
 GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 
-# Set GPIO Pins
-GPIO_TRIGGER = 4
-GPIO_ECHO = 17
+# Setup pin untuk TRIG dan ECHO
+TRIG = 23
+ECHO = 24
 
-# Set GPIO direction (IN / OUT)
-GPIO.setup(GPIO_TRIGGER, GPIO.OUT)
-GPIO.setup(GPIO_ECHO, GPIO.IN)
+GPIO.setup(TRIG, GPIO.OUT)
+GPIO.setup(ECHO, GPIO.IN)
 
 def distance():
-    # Set Trigger to HIGH
-    GPIO.output(GPIO_TRIGGER, True)
-
-    # Set Trigger after 0.01ms to LOW
+    # Set TRIG ke LOW untuk memastikan tidak ada sinyal terdeteksi
+    GPIO.output(TRIG, False)
+    time.sleep(0.2)
+    
+    # Kirim sinyal TRIG HIGH selama 10 µs
+    GPIO.output(TRIG, True)
     time.sleep(0.00001)
-    GPIO.output(GPIO_TRIGGER, False)
-
-    start_time = time.time()
-    stop_time = time.time()
-
-    # Save StartTime
-    while GPIO.input(GPIO_ECHO) == 0:
+    GPIO.output(TRIG, False)
+    
+    # Hitung waktu untuk ECHO menerima sinyal
+    while GPIO.input(ECHO) == 0:
         start_time = time.time()
-
-    # Save time of arrival
-    while GPIO.input(GPIO_ECHO) == 1:
+    
+    while GPIO.input(ECHO) == 1:
         stop_time = time.time()
-
-    # Time difference between start and arrival
-    time_elapsed = stop_time - start_time
-    # Multiply with the speed of sound (34300 cm/s)
-    # and divide by 2, because it’s the round trip
-    distance = (time_elapsed * 34300) / 2
-
-    return distance
+    
+    # Hitung jarak berdasarkan waktu perjalanan gelombang ultrasonik
+    elapsed_time = stop_time - start_time
+    distance_cm = (elapsed_time * 34300) / 2  # Kecepatan suara: 343 m/s
+    return distance_cm
 
 try:
     while True:
-        dist = distance()
-        print(f"Measured Distance = {dist:.2f} cm")
+        jarak = distance()
+        print("Jarak: %.2f cm" % jarak)
         time.sleep(1)
 
 except KeyboardInterrupt:
-    print("Measurement stopped by User")
     GPIO.cleanup()
 ```
 - Muhammad Kenas Galeno Putra (5027231069)
