@@ -2,7 +2,7 @@
 import RPi.GPIO as GPIO
 import time
 
-# GPIO Mode (BCM)
+```# GPIO Mode (BCM)
 GPIO.setmode(GPIO.BCM)
 
 # Set GPIO Pins
@@ -49,7 +49,7 @@ try:
 except KeyboardInterrupt:
     print("Measurement stopped by User")
     GPIO.cleanup()
-
+```
 - Muhammad Kenas Galeno Putra (5027231069)
 - Veri Rahman (5027231088)
 
