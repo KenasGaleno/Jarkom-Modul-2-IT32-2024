@@ -1,8 +1,9 @@
 # Jarkom-Modul-2-IT32-2024
+```
 import RPi.GPIO as GPIO
 import time
 
-```# GPIO Mode (BCM)
+# GPIO Mode (BCM)
 GPIO.setmode(GPIO.BCM)
 
 # Set GPIO Pins
