@@ -1,4 +1,54 @@
 # Jarkom-Modul-2-IT32-2024
+import RPi.GPIO as GPIO
+import time
+
+# GPIO Mode (BCM)
+GPIO.setmode(GPIO.BCM)
+
+# Set GPIO Pins
+GPIO_TRIGGER = 4
+GPIO_ECHO = 17
+
+# Set GPIO direction (IN / OUT)
+GPIO.setup(GPIO_TRIGGER, GPIO.OUT)
+GPIO.setup(GPIO_ECHO, GPIO.IN)
+
+def distance():
+    # Set Trigger to HIGH
+    GPIO.output(GPIO_TRIGGER, True)
+
+    # Set Trigger after 0.01ms to LOW
+    time.sleep(0.00001)
+    GPIO.output(GPIO_TRIGGER, False)
+
+    start_time = time.time()
+    stop_time = time.time()
+
+    # Save StartTime
+    while GPIO.input(GPIO_ECHO) == 0:
+        start_time = time.time()
+
+    # Save time of arrival
+    while GPIO.input(GPIO_ECHO) == 1:
+        stop_time = time.time()
+
+    # Time difference between start and arrival
+    time_elapsed = stop_time - start_time
+    # Multiply with the speed of sound (34300 cm/s)
+    # and divide by 2, because it’s the round trip
+    distance = (time_elapsed * 34300) / 2
+
+    return distance
+
+try:
+    while True:
+        dist = distance()
+        print(f"Measured Distance = {dist:.2f} cm")
+        time.sleep(1)
+
+except KeyboardInterrupt:
+    print("Measurement stopped by User")
+    GPIO.cleanup()
 
 - Muhammad Kenas Galeno Putra (5027231069)
 - Veri Rahman (5027231088)
